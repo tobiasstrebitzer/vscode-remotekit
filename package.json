@@ -1,0 +1,199 @@
+{
+  "name": "remotekit",
+  "displayName": "RemoteKit",
+  "description": "Remote SSH Extension Toolkit",
+  "version": "0.1.1",
+  "publisher": "silkweave",
+  "license": "MIT",
+  "icon": "media/icon.png",
+  "homepage": "https://github.com/tobiasstrebitzer/vscode-remotekit#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tobiasstrebitzer/vscode-remotekit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tobiasstrebitzer/vscode-remotekit/issues"
+  },
+  "galleryBanner": {
+    "color": "#3F2EB7",
+    "theme": "dark"
+  },
+  "keywords": [
+    "remote",
+    "ssh",
+    "remote-ssh",
+    "file explorer",
+    "filesystem",
+    "remote development",
+    "gallery"
+  ],
+  "engines": {
+    "vscode": "^1.125.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "qna": false,
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "extensionKind": [
+    "workspace"
+  ],
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "remotekit.fileExplorer",
+          "type": "webview",
+          "name": "Files",
+          "icon": "$(remote-explorer)",
+          "contextualTitle": "Remote File Explorer"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "remotekit.fileExplorer.navigateToParent",
+        "title": "Go to Parent Folder",
+        "category": "RemoteKit",
+        "icon": "$(arrow-up)"
+      },
+      {
+        "command": "remotekit.fileExplorer.resetRoot",
+        "title": "Reset to Working Folder",
+        "category": "RemoteKit",
+        "icon": "$(home)"
+      },
+      {
+        "command": "remotekit.fileExplorer.refresh",
+        "title": "Refresh",
+        "category": "RemoteKit",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "remotekit.fileExplorer.setRoot",
+        "title": "Set as Files Root",
+        "category": "RemoteKit"
+      },
+      {
+        "command": "remotekit.fileExplorer.setExplorerRoot",
+        "title": "Set as Explorer Root",
+        "category": "RemoteKit"
+      },
+      {
+        "command": "remotekit.fileExplorer.viewAsTree",
+        "title": "View as Tree",
+        "category": "RemoteKit",
+        "icon": "$(list-tree)"
+      },
+      {
+        "command": "remotekit.fileExplorer.viewAsSmall",
+        "title": "View as Gallery (Small)",
+        "category": "RemoteKit",
+        "icon": {
+          "light": "media/grid-small-light.svg",
+          "dark": "media/grid-small-dark.svg"
+        }
+      },
+      {
+        "command": "remotekit.fileExplorer.viewAsMedium",
+        "title": "View as Gallery (Medium)",
+        "category": "RemoteKit",
+        "icon": {
+          "light": "media/grid-medium-light.svg",
+          "dark": "media/grid-medium-dark.svg"
+        }
+      },
+      {
+        "command": "remotekit.fileExplorer.viewAsLarge",
+        "title": "View as Gallery (Large)",
+        "category": "RemoteKit",
+        "icon": {
+          "light": "media/grid-large-light.svg",
+          "dark": "media/grid-large-dark.svg"
+        }
+      }
+    ],
+    "menus": {
+      "webview/context": [
+        {
+          "command": "remotekit.fileExplorer.setExplorerRoot",
+          "when": "webviewSection == 'remotekit.folder'",
+          "group": "navigation@1"
+        },
+        {
+          "command": "remotekit.fileExplorer.setRoot",
+          "when": "webviewSection == 'remotekit.folder'",
+          "group": "navigation@2"
+        }
+      ],
+      "view/title": [
+        {
+          "command": "remotekit.fileExplorer.navigateToParent",
+          "when": "view == remotekit.fileExplorer",
+          "group": "navigation@1"
+        },
+        {
+          "command": "remotekit.fileExplorer.resetRoot",
+          "when": "view == remotekit.fileExplorer",
+          "group": "navigation@2"
+        },
+        {
+          "command": "remotekit.fileExplorer.refresh",
+          "when": "view == remotekit.fileExplorer",
+          "group": "navigation@3"
+        },
+        {
+          "command": "remotekit.fileExplorer.viewAsTree",
+          "when": "view == remotekit.fileExplorer",
+          "group": "navigation@4"
+        },
+        {
+          "command": "remotekit.fileExplorer.viewAsSmall",
+          "when": "view == remotekit.fileExplorer",
+          "group": "navigation@5"
+        },
+        {
+          "command": "remotekit.fileExplorer.viewAsMedium",
+          "when": "view == remotekit.fileExplorer",
+          "group": "navigation@6"
+        },
+        {
+          "command": "remotekit.fileExplorer.viewAsLarge",
+          "when": "view == remotekit.fileExplorer",
+          "group": "navigation@7"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./ && pnpm run build:webview",
+    "build:webview": "vite build -c webview-ui/vite.config.ts",
+    "typecheck:webview": "tsc -p webview-ui/tsconfig.json",
+    "watch": "tsc -watch -p ./",
+    "watch:webview": "vite build -c webview-ui/vite.config.ts --watch",
+    "lint": "eslint src webview-ui"
+  },
+  "devDependencies": {
+    "@stylistic/eslint-plugin": "^5.10.0",
+    "@types/node": "22.x",
+    "@types/react": "^19.2.17",
+    "@types/react-dom": "^19.2.3",
+    "@types/vscode": "^1.125.0",
+    "@vitejs/plugin-react": "^6.0.2",
+    "@vscode/codicons": "^0.0.45",
+    "@vscode-elements/elements": "^2.5.1",
+    "@vscode-elements/react-elements": "^2.4.0",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.39.3",
+    "react": "^19.2.7",
+    "react-dom": "^19.2.7",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1",
+    "vite": "^8.0.16"
+  }
+}

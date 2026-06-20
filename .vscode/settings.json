@@ -1,0 +1,29 @@
+{
+	"files.exclude": {
+		"out": true,
+    "dist": true,
+		"node_modules": true
+	},
+	"editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.organizeImports": "explicit"
+  },
+	"editor.formatOnSave": true,
+  "editor.rulers": [80],
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+	"eslint.nodePath": "./node_modules",
+  "eslint.run": "onType",
+  "eslint.workingDirectories": ["src", "webview-ui"],
+	"files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
+  "json.format.enable": false,
+	"js/ts.preferences.importModuleSpecifier": "relative",
+	"js/ts.tsc.autoDetect": "off",
+  "js/ts.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "js/ts.format.semicolons": "remove",
+  "js/ts.preferences.quoteStyle": "single",
+  "js/ts.tsdk.path": "node_modules/typescript/lib",
+  "js/ts.updateImportsOnFileMove.enabled": "never"
+}

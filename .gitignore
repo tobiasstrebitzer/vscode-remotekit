@@ -1,0 +1,15 @@
+out
+dist
+node_modules
+.claude/
+.vscode-test/
+CLAUDE.md
+*.vsix
+.DS_Store
+.mcp.json
+project/
+docs/PUBLISHING.md
+
+# stray tsc emits (webview is built by Vite, sources are .ts/.tsx)
+webview-ui/**/*.js
+webview-ui/**/*.js.map
