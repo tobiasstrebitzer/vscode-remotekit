@@ -6,6 +6,8 @@ When you connect to a remote machine with VS Code's Remote-SSH extension, you op
 
 RemoteKit runs **on the remote machine** and reads its filesystem directly, so there's nothing to configure.
 
+![RemoteKit Preview](media/preview.png)
+
 ## Features
 
 ### 🗂️ Remote File Explorer

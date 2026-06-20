@@ -2,7 +2,7 @@
   "name": "remotekit",
   "displayName": "RemoteKit",
   "description": "Remote SSH Extension Toolkit",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "silkweave",
   "license": "MIT",
   "icon": "media/icon.png",
